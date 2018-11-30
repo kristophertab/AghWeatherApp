@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="AghWeatherApp.Views.ItemsPage"
+              Title="{Binding Title}"
+             x:Name="BrowseItemsPage">
+    <StackLayout>
+        <Entry x:Name="pathEntry" Text = "http://www.example.com:8080" HorizontalOptions="Center"  VerticalOptions="Start" />
+        <Button x:Name="getDevicesButton" Text="Get Devices" HorizontalOptions="Center" VerticalOptions="Start" Clicked="Button_ClickedAsync"/>
+        <microcharts:ChartView x:Name="chartDevicesAvr" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" />
+    </StackLayout>
+</ContentPage>
