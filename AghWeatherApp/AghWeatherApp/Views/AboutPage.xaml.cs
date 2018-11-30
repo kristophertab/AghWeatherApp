@@ -23,7 +23,7 @@ namespace AghWeatherApp.Views
 
             InitializeComponent();
 
-            this.pathEntry.Text = urlTest;
+            this.pathEntry.Text = urlProd;
 
             showMicrochartsDevice(3);
         }
