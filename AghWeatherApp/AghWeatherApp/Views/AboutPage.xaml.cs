@@ -6,6 +6,7 @@ using Xamarin.Forms.Xaml;
 using AghWeatherApp.Services;
 using System.Threading.Tasks;
 using System.Globalization;
+using AghWeatherApp.ViewModels;
 
 namespace AghWeatherApp.Views
 {
@@ -23,7 +24,9 @@ namespace AghWeatherApp.Views
 
             InitializeComponent();
 
-            this.pathEntry.Text = urlProd;
+            BindingContext = new AboutViewModel();
+
+            this.pathEntry.Text = urlTest;
 
             showMicrochartsDevice(3);
         }

@@ -20,6 +20,7 @@ namespace AghWeatherApp.Views
             {
                 new HomeMenuItem {Id = MenuItemType.Main, Title="Main" },
                 new HomeMenuItem {Id = MenuItemType.Details, Title="Details" },
+                new HomeMenuItem {Id = MenuItemType.Login, Title="Change User" },
             };
 
             ListViewMenu.ItemsSource = menuItems;

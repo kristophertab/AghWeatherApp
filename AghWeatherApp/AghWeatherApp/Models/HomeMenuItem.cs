@@ -7,7 +7,8 @@ namespace AghWeatherApp.Models
     public enum MenuItemType
     {
         Details,
-        Main
+        Main,
+        Login
     }
     public class HomeMenuItem
     {

@@ -17,7 +17,7 @@ namespace AghWeatherApp.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Main, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.Login, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -31,6 +31,9 @@ namespace AghWeatherApp.Views
                         break;
                     case (int)MenuItemType.Details:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        break;
+                    case (int)MenuItemType.Login:
+                        MenuPages.Add(id, new NavigationPage(new LoginPage()));
                         break;
                 }
             }

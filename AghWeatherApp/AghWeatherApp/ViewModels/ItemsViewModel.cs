@@ -7,17 +7,19 @@ using Xamarin.Forms;
 
 using AghWeatherApp.Models;
 using AghWeatherApp.Views;
+using System.ComponentModel;
 
 namespace AghWeatherApp.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
+        private string userName;
         public ObservableCollection<Item> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel()
         {
-            Title = "Browse";
+            Title = "Main";
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
@@ -54,5 +56,14 @@ namespace AghWeatherApp.ViewModels
                 IsBusy = false;
             }
         }
+
+        public string UserName
+        {
+            get
+            {
+                return "user: " + ProgramState.uName;
+            }
+        }
+
     }
 }

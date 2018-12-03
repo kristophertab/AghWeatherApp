@@ -8,6 +8,7 @@ using AghWeatherApp.Services;
 using SkiaSharp;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using AghWeatherApp.Models;
 
 namespace AghWeatherApp.Views
 {

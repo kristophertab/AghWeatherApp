@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AghWeatherApp.Views.LoginPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="This is login page" VerticalOptions="Center" HorizontalOptions="Center"  x:Name="labelInfo"/>
+
+            <Label Text="username:" VerticalOptions="Center" HorizontalOptions="Start"/>
+            <Entry VerticalOptions="Center" HorizontalOptions="Fill" x:Name="entryUser"/>
+
+            <Label Text="password:" VerticalOptions="Center" HorizontalOptions="Start"/>
+            <Entry VerticalOptions="Center" HorizontalOptions="Fill" x:Name="entryPassword"/>
+
+            <Button Text="Log In" VerticalOptions="Center" HorizontalOptions="Center" Clicked="LoginButtonClickedAsync"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

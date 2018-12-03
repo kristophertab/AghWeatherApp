@@ -17,5 +17,7 @@
         <Picker x:Name="devicePicker" HorizontalOptions="Fill"  VerticalOptions="Center" SelectedIndexChanged="OnPickerSelectedIndexChangedAsync" />
 
         <microcharts:ChartView x:Name="chartView" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" />
+
+        <Label Text="{Binding UserName}" HorizontalOptions="CenterAndExpand" VerticalOptions="End" />
     </StackLayout>
 </ContentPage>
