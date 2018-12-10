@@ -4,6 +4,7 @@ using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using AghWeatherApp.Models;
 
 namespace AghWeatherApp.Services
 {
@@ -14,6 +15,7 @@ namespace AghWeatherApp.Services
         public static string maxSufix = "/max";
         public static string avrSufix = "/avg";
         public static string plotSufix = "/week";
+        public static string loginSufix = "/user/login";
 
         public static string detailedAvgSufix(int deviceNr) {
             return (avrSufix + "/" + deviceNr.ToString());
@@ -98,6 +100,27 @@ namespace AghWeatherApp.Services
 
                 return retStr;
             }
+        }
+        public static async Task PostLoginData(string username, string password, Action<User> callback)
+
+        {
+            HttpClient client = new HttpClient();
+            var uri = new Uri(string.Format(ProgramState.apiUrl+ loginSufix, string.Empty));
+            string jsonData = "{\"UserName\": \"" + username + "\",\"Password\": \"" + password + "\",\"UserAgent\": \"chrome2\"}";
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+
+            response = await client.PostAsync(uri, content);
+
+            User data = null;
+            if (response != null)
+            {
+                string json = response.Content.ReadAsStringAsync().Result;
+                data = JsonConvert.DeserializeObject<User>(json);
+            }
+
+            callback(data);
+
         }
     }
 }

@@ -13,6 +13,12 @@
             <Entry VerticalOptions="Center" HorizontalOptions="Fill" x:Name="entryPassword"/>
 
             <Button Text="Log In" VerticalOptions="Center" HorizontalOptions="Center" Clicked="LoginButtonClickedAsync"/>
+
+            <Label Text="url:" VerticalOptions="End" HorizontalOptions="Start"/>
+            <StackLayout>
+                <Entry x:Name="updateUrlEntry" Text = "http://10.10.118.25:5000" HorizontalOptions="StartAndExpand"  VerticalOptions="End" />
+                <Button x:Name="updateUrl" Text="set url" HorizontalOptions="End" VerticalOptions="End" Clicked="updateUrl_Clicked"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

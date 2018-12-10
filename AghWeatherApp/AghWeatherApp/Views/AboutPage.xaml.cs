@@ -31,7 +31,12 @@ namespace AghWeatherApp.Views
             showMicrochartsDevice(3);
         }
 
-        private async Task Button_ClickedAsync(object sender, EventArgs e)
+        protected override void OnAppearing()
+        {
+            BindingContext = new AboutViewModel();
+        }
+
+            private async Task Button_ClickedAsync(object sender, EventArgs e)
         {
             List<TemperatureDevice> serverDevices = null;
             if (!String.IsNullOrEmpty(pathEntry.Text))

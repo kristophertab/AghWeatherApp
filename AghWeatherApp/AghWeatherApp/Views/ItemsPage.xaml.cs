@@ -49,6 +49,11 @@ namespace AghWeatherApp.Views
             ShowChart();
         }
 
+        protected override void OnAppearing()
+        {
+            BindingContext = viewModel = new ItemsViewModel();
+        }
+
         private async Task Button_ClickedAsync(object sender, EventArgs e)
         {
             List<TemperatureDevice> serverDevices = null;
