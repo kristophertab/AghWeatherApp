@@ -3,26 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AghWeatherApp.Views.UserDetails">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="user_Guid" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-            <Entry x:Name="guidEntry" Text="{Binding userid}" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+        <ScrollView>
+            <StackLayout>
+                <Label Text="user_Guid" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="guidEntry" Text="{Binding userid}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
 
-            <Label Text="username" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-            <Entry x:Name="usernameEntry" Text="{Binding username}" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                <Label Text="username" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="usernameEntry" Text="{Binding username}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
 
-            <Label Text="forename" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-            <Entry x:Name="forenameEntry" Text="{Binding forename}" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                <Label Text="forename" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="forenameEntry" Text="{Binding forename}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
 
-            <Label Text="email" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-            <Entry x:Name="emailEntry" Text="{Binding email}" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                <Label Text="email" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="emailEntry" Text="{Binding email}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
 
-            <Label Text="password" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-            <Entry x:Name="passwordEntry" Text="{Binding password}" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                <Label Text="password" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                <Entry x:Name="passwordEntry" Text="{Binding password}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
 
-            <Picker x:Name="usrsListPicker"  VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-            <Button x:Name="createUserButton" Text="Create User" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-            <Button x:Name="updateUserButton" Text="Update User" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-            <Button x:Name="deleteUserButton" Text="Delete User" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+                <Picker x:Name="usrsListPicker"  VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
+                <Button x:Name="createUserButton" Text="Create" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                <Button x:Name="updateUserButton" Text="Update" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                <Button x:Name="deleteUserButton" Text="Delete" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+        </ScrollView>
+        
     </ContentPage.Content>
 </ContentPage>

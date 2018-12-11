@@ -8,7 +8,8 @@ namespace AghWeatherApp.Models
     {
         Details,
         Main,
-        Login
+        Login,
+        UserDetails,
     }
     public class HomeMenuItem
     {

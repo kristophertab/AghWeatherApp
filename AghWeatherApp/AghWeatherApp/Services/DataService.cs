@@ -16,8 +16,10 @@ namespace AghWeatherApp.Services
         public static string avrSufix = "/avg";
         public static string plotSufix = "/week";
         public static string loginSufix = "/user/login";
+        public static string userSufix = "/api/user";
 
-        public static string detailedAvgSufix(int deviceNr) {
+        public static string detailedAvgSufix(int deviceNr)
+        {
             return (avrSufix + "/" + deviceNr.ToString());
         }
 
@@ -81,7 +83,7 @@ namespace AghWeatherApp.Services
                 string json = response.Content.ReadAsStringAsync().Result;
                 data = JsonConvert.DeserializeObject<List<Weather>>(json);
             }
-            
+
             callback(data);
         }
 
@@ -105,7 +107,7 @@ namespace AghWeatherApp.Services
 
         {
             HttpClient client = new HttpClient();
-            var uri = new Uri(string.Format(ProgramState.apiUrl+ loginSufix, string.Empty));
+            var uri = new Uri(string.Format(ProgramState.apiUrl + loginSufix, string.Empty));
             string jsonData = "{\"UserName\": \"" + username + "\",\"Password\": \"" + password + "\",\"UserAgent\": \"chrome2\"}";
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
             HttpResponseMessage response = null;
@@ -122,5 +124,66 @@ namespace AghWeatherApp.Services
             callback(data);
 
         }
+
+
+        public static async Task GetAllUsers()
+        {
+            HttpClient client = new HttpClient();
+            String queryString = ProgramState.apiUrl + userSufix;
+            var response = await client.GetAsync(queryString);
+
+            List<UserData> data = null;
+            if (response != null)
+            {
+                string json = response.Content.ReadAsStringAsync().Result;
+                data = JsonConvert.DeserializeObject<List<UserData>>(json);
+            }
+        }
+
+        public static async Task<UserData> GetUser(int userId)
+        {
+            HttpClient client = new HttpClient();
+            String queryString = ProgramState.apiUrl + userSufix + "/" + userId.ToString();
+            var response = await client.GetAsync(queryString);
+
+            UserData data = null;
+            if (response != null)
+            {
+                string json = response.Content.ReadAsStringAsync().Result;
+                data = JsonConvert.DeserializeObject<UserData>(json);
+            }
+
+            return data;
+        }
+
+        public static async Task PostUser(UserData userData)
+        {
+            HttpClient client = new HttpClient();
+            var uri = new Uri(string.Format(ProgramState.apiUrl + userSufix, string.Empty));
+            String jsonData = "{ \"user_Guid\":" + userData.user_Guid + ", \"username\":" + userData.username + ", \"forename\":" + userData.forename + ", \"surname\":" + userData.surname + ", \"email\":" + userData.email + ", \"password\":" + userData.password + " }";
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            await client.PostAsync(uri, content);
+        }
+
+        public static async Task PutUser(UserData userData)
+        {
+            HttpClient client = new HttpClient();
+            var uri = new Uri(string.Format(ProgramState.apiUrl + userSufix + "/" + userData.user_Guid.ToString() , string.Empty));
+            String jsonData = "{ \"user_Guid\":" + userData.user_Guid + ", \"username\":" + userData.username + ", \"forename\":" + userData.forename + ", \"surname\":" + userData.surname + ", \"email\":" + userData.email + ", \"password\":" + userData.password + " }";
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            await client.PutAsync(uri, content);
+        }
+
+        public static async Task DelateUser(int userId)
+        {
+            HttpClient client = new HttpClient();
+            String queryString = ProgramState.apiUrl + userSufix + "/" + userId.ToString();
+
+            await client.DeleteAsync(queryString);
+        }
+
+
     }
 }
