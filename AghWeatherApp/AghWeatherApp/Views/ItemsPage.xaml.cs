@@ -46,6 +46,17 @@ namespace AghWeatherApp.Views
             };
             devices.Add(mockDev2);
 
+            
+
+            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            {
+                Device.BeginInvokeOnMainThread(() => refreshFuction());
+                return true;
+            });
+        }
+
+        private void refreshFuction()
+        {
             ShowChart();
         }
 
@@ -63,17 +74,13 @@ namespace AghWeatherApp.Views
 
                 serverDevices = await DataService.GetAvredgeFromServer(requestUrl);
 
-                foreach (TemperatureDevice device in devices)
-                {
-                    devices.Remove(device);
-                }
-
+                devices.Clear();
                 foreach (TemperatureDevice serverDevice in serverDevices)
                 {
                     devices.Add(serverDevice);
                 }
 
-                ShowChart();
+                //ShowChart();
 
             }
         }
