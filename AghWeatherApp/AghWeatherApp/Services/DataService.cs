@@ -126,7 +126,7 @@ namespace AghWeatherApp.Services
         }
 
 
-        public static async Task GetAllUsers()
+        public static async Task<List<UserData>> GetAllUsers()
         {
             HttpClient client = new HttpClient();
             String queryString = ProgramState.apiUrl + userSufix;
@@ -138,6 +138,8 @@ namespace AghWeatherApp.Services
                 string json = response.Content.ReadAsStringAsync().Result;
                 data = JsonConvert.DeserializeObject<List<UserData>>(json);
             }
+
+            return data;
         }
 
         public static async Task<UserData> GetUser(int userId)

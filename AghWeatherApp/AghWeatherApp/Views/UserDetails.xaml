@@ -5,25 +5,26 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label Text="user_Guid" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-                <Entry x:Name="guidEntry" Text="{Binding userid}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
-
                 <Label Text="username" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-                <Entry x:Name="usernameEntry" Text="{Binding username}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
+                <Entry x:Name="usernameEntry" Text="" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
 
                 <Label Text="forename" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-                <Entry x:Name="forenameEntry" Text="{Binding forename}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
+                <Entry x:Name="forenameEntry" Text="" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
 
                 <Label Text="email" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-                <Entry x:Name="emailEntry" Text="{Binding email}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
+                <Entry x:Name="emailEntry" Text="" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
 
                 <Label Text="password" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-                <Entry x:Name="passwordEntry" Text="{Binding password}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
+                <Entry x:Name="passwordEntry" Text="" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
 
-                <Picker x:Name="usrsListPicker"  VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
-                <Button x:Name="createUserButton" Text="Create" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-                <Button x:Name="updateUserButton" Text="Update" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
-                <Button x:Name="deleteUserButton" Text="Delete" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+
+                <Button x:Name="createUserButton" Text="Create" VerticalOptions="Start" HorizontalOptions="FillAndExpand"  Clicked="createUserButton_Clicked"/>
+                
+                <Label Text="select user:" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" />
+                <Picker x:Name="usersListPicker" VerticalOptions="Start" HorizontalOptions="FillAndExpand" SelectedIndexChanged="FillUserDataFiledBySelectedPickerItem"/>
+
+                <Button x:Name="updateUserButton" Text="Update" VerticalOptions="Start" HorizontalOptions="FillAndExpand"  Clicked="updateUserButton_Clicked"/>
+                <Button x:Name="deleteUserButton" Text="Delete" VerticalOptions="Start" HorizontalOptions="FillAndExpand" Clicked="deleteUserButton_Clicked"/>
             </StackLayout>
         </ScrollView>
         
