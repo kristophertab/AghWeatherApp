@@ -11,7 +11,7 @@ namespace AghWeatherApp.Views
     public partial class MenuPage : ContentPage
     {
         MainPage RootPage { get => Application.Current.MainPage as MainPage; }
-        List<HomeMenuItem> menuItems;
+        List<HomeMenuItem> menuItems, menuItemsAdmin, menuItemsUser;
         public MenuPage()
         {
             InitializeComponent();
@@ -24,17 +24,47 @@ namespace AghWeatherApp.Views
                 new HomeMenuItem {Id = MenuItemType.UserDetails, Title = "Manage Users"}
             };
 
-            ListViewMenu.ItemsSource = menuItems;
+            menuItemsAdmin = new List<HomeMenuItem>
+            {
+                new HomeMenuItem {Id = MenuItemType.Main, Title="Main" },
+                new HomeMenuItem {Id = MenuItemType.Details, Title="Details" },
+                new HomeMenuItem {Id = MenuItemType.UserDetails, Title = "Manage Users"}
+            };
+
+            menuItemsUser = new List<HomeMenuItem>
+            {
+                new HomeMenuItem {Id = MenuItemType.Main, Title="Main" },
+                new HomeMenuItem {Id = MenuItemType.Details, Title="Details" },
+            };
+
+            UpdateMenuItems();
 
             ListViewMenu.SelectedItem = menuItems[0];
+
             ListViewMenu.ItemSelected += async (sender, e) =>
             {
+                UpdateMenuItems();
+
                 if (e.SelectedItem == null)
                     return;
 
                 var id = (int)((HomeMenuItem)e.SelectedItem).Id;
                 await RootPage.NavigateFromMenu(id);
+
             };
+        }
+
+        public void UpdateMenuItems()
+        {
+            switch (ProgramState.roleId)
+            {
+                case 1: //admin
+                    ListViewMenu.ItemsSource = menuItemsAdmin;
+                    break;
+                default://user
+                    ListViewMenu.ItemsSource = menuItemsUser;
+                    break;
+            }
         }
     }
 }

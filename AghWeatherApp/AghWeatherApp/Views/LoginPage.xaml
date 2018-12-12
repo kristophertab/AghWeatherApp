@@ -4,8 +4,6 @@
              x:Class="AghWeatherApp.Views.LoginPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="This is login page" VerticalOptions="Center" HorizontalOptions="Center"  x:Name="labelInfo"/>
-
             <Label Text="username:" VerticalOptions="Center" HorizontalOptions="Start"/>
             <Entry VerticalOptions="Center" HorizontalOptions="Fill" x:Name="entryUser"/>
 
@@ -14,8 +12,8 @@
 
             <Button Text="Log In" VerticalOptions="Center" HorizontalOptions="Center" Clicked="LoginButtonClickedAsync"/>
 
-            <Label Text="url:" VerticalOptions="End" HorizontalOptions="Start"/>
-            <StackLayout>
+            <Label Text="url:" VerticalOptions="EndAndExpand" HorizontalOptions="Start"/>
+            <StackLayout Orientation="Horizontal">
                 <Entry x:Name="updateUrlEntry" Text = "http://10.10.118.25:5000" HorizontalOptions="StartAndExpand"  VerticalOptions="End" />
                 <Button x:Name="updateUrl" Text="set url" HorizontalOptions="End" VerticalOptions="End" Clicked="updateUrl_Clicked"/>
             </StackLayout>

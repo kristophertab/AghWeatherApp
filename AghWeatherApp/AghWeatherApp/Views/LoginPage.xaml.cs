@@ -41,7 +41,7 @@ namespace AghWeatherApp.Views
                 await DisplayAlert("Error", "no such user in database", "OK");
 
             }
-            
+
         }
 
         private void updateUrl_Clicked(object sender, EventArgs e)
