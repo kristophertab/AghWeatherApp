@@ -27,6 +27,8 @@ namespace AghWeatherApp.Droid
 		public static void UpdateIdValues()
 		{
 			global::Microcharts.Droid.Resource.String.library_name = global::AghWeatherApp.Droid.Resource.String.library_name;
+			global::PCLStorage.Resource.String.ApplicationName = global::AghWeatherApp.Droid.Resource.String.ApplicationName;
+			global::PCLStorage.Resource.String.Hello = global::AghWeatherApp.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::AghWeatherApp.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -3966,6 +3968,12 @@ namespace AghWeatherApp.Droid
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f0a003d
+			public const int ApplicationName = 2131361853;
+			
+			// aapt resource value: 0x7f0a003c
+			public const int Hello = 2131361852;
+			
 			// aapt resource value: 0x7f0a0015
 			public const int abc_action_bar_home_description = 2131361813;
 			
@@ -4062,8 +4070,8 @@ namespace AghWeatherApp.Droid
 			// aapt resource value: 0x7f0a0035
 			public const int character_counter_pattern = 2131361845;
 			
-			// aapt resource value: 0x7f0a003c
-			public const int library_name = 2131361852;
+			// aapt resource value: 0x7f0a003e
+			public const int library_name = 2131361854;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int mr_button_content_description = 2131361792;

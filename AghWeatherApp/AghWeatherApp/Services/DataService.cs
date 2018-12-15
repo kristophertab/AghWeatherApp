@@ -11,11 +11,11 @@ namespace AghWeatherApp.Services
     class DataService
     {
         public static string serviceUrl = "http://192.168.43.159:7135/api/temperatures";
-        public static string minSufix = "/min";
-        public static string maxSufix = "/max";
-        public static string avrSufix = "/avg";
-        public static string plotSufix = "/week";
-        public static string loginSufix = "/user/login";
+        public static string minSufix = "/api/min";
+        public static string maxSufix = "/api/max";
+        public static string avrSufix = "/api/avg";
+        public static string plotSufix = "/api/week";
+        public static string loginSufix = "/api/login";
         public static string userSufix = "/api/user";
 
         public static string detailedAvgSufix(int deviceNr)
@@ -103,7 +103,7 @@ namespace AghWeatherApp.Services
                 return retStr;
             }
         }
-        public static async Task PostLoginData(string username, string password, Action<User> callback)
+        public static async Task PostLoginData(string username, string password, Action<List<User>> callback)
 
         {
             HttpClient client = new HttpClient();
@@ -114,11 +114,11 @@ namespace AghWeatherApp.Services
 
             response = await client.PostAsync(uri, content);
 
-            User data = null;
+            List<User> data = null;
             if (response != null)
             {
                 string json = response.Content.ReadAsStringAsync().Result;
-                data = JsonConvert.DeserializeObject<User>(json);
+                data = JsonConvert.DeserializeObject<List<User>>(json);
             }
 
             callback(data);
@@ -162,7 +162,8 @@ namespace AghWeatherApp.Services
         {
             HttpClient client = new HttpClient();
             var uri = new Uri(string.Format(ProgramState.apiUrl + userSufix, string.Empty));
-            String jsonData = "{ \"user_Guid\":" + userData.user_Guid + ", \"username\":" + userData.username + ", \"forename\":" + userData.forename + ", \"surname\":" + userData.surname + ", \"email\":" + userData.email + ", \"password\":" + userData.password + " }";
+            //String jsonData = "{ \"user_Guid\":" + userData.user_Guid + ", \"username\":" + userData.username + ", \"forename\":" + userData.forename + ", \"surname\":" + userData.surname + ", \"email\":" + userData.email + ", \"password\":" + userData.password + " }";
+            String jsonData = JsonConvert.SerializeObject(userData);
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
             await client.PostAsync(uri, content);
@@ -172,7 +173,10 @@ namespace AghWeatherApp.Services
         {
             HttpClient client = new HttpClient();
             var uri = new Uri(string.Format(ProgramState.apiUrl + userSufix + "/" + userData.user_Guid.ToString() , string.Empty));
-            String jsonData = "{ \"user_Guid\":" + userData.user_Guid + ", \"username\":" + userData.username + ", \"forename\":" + userData.forename + ", \"surname\":" + userData.surname + ", \"email\":" + userData.email + ", \"password\":" + userData.password + " }";
+
+            String jsonData = JsonConvert.SerializeObject(userData);
+
+            //String jsonData = "{ \"user_Guid\":" + userData.user_Guid + ", \"username\":" + userData.username + ", \"forename\":" + userData.forename + ", \"surname\":" + userData.surname + ", \"email\":" + userData.email + ", \"password\":" + userData.password + " }";
             var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
             await client.PutAsync(uri, content);

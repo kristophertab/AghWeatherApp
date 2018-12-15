@@ -15,10 +15,18 @@ namespace AghWeatherApp.ViewModels
         }
 
         private string newUserName = "nonane";
-        private void setNewUser(User newUserData)
+        private void setNewUser(List<User> newUserData)
         {
-            ProgramState.userId = newUserData.user_Guid;
-            ProgramState.roleId = newUserData.role_Id;
+            ProgramState.userId = newUserData[0].user_Guid;
+            ProgramState.roleId = newUserData[0].role_Id;
+            foreach (User u in newUserData)
+            {
+                if(u.role_Id == 1)
+                {
+                    ProgramState.roleId = 1; //is admin
+                }
+            }
+
             ProgramState.uName = newUserName;
         }
 

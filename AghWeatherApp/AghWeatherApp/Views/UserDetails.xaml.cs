@@ -22,7 +22,7 @@ namespace AghWeatherApp.Views
 
             vm = new UserDetailsViewModel();
 
-            Device.StartTimer(TimeSpan.FromSeconds(1), () =>
+            Device.StartTimer(TimeSpan.FromSeconds(3), () =>
             {
                 Device.BeginInvokeOnMainThread(() => refreshFuction());
                 return true;
@@ -43,7 +43,12 @@ namespace AghWeatherApp.Views
 
         private void fillUsersPicker()
         {
-            
+
+            vm.ReadAllUsers();
+
+            this.usersListPicker.Items.Clear();
+
+
             foreach (string name in vm.userNamesList)
             {
                 if (!this.usersListPicker.Items.Contains(name))
@@ -52,6 +57,13 @@ namespace AghWeatherApp.Views
                 }
                
             }
+
+           // foreach(string name in this.usersListPicker.Items)
+           // {
+            //    if (!vm.userNamesList.Contains(name){
+            //        this.usersListPicker.Items.Remove(name);
+             //   }
+           // }
         }
 
         private void FillUserDataFiledBySelectedPickerItem(object sender, EventArgs e)

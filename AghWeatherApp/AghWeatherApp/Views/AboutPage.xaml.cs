@@ -7,6 +7,8 @@ using AghWeatherApp.Services;
 using System.Threading.Tasks;
 using System.Globalization;
 using AghWeatherApp.ViewModels;
+using System.IO;
+using PCLStorage;
 
 namespace AghWeatherApp.Views
 {
@@ -132,6 +134,55 @@ namespace AghWeatherApp.Views
                 string requestUrl = pathEntry.Text + DataService.detailedAvgSufix(selectedIndex+1);
                 await DataService.GetWeatherListFromService(requestUrl, showTemperatureOnMicrochart);
             }
+        }
+
+        public async Task CreateRealFileAsync()
+        {
+            // get hold of the file system
+            IFolder rootFolder = FileSystem.Current.LocalStorage;
+
+            // create a folder, if one does not exist already
+            IFolder folder = await rootFolder.CreateFolderAsync("aghWeather", CreationCollisionOption.OpenIfExists);
+
+            // create a file, overwriting any existing file
+            IFile file = await folder.CreateFileAsync("MyFile.txt", CreationCollisionOption.ReplaceExisting);
+
+            // populate the file with some text
+            await file.WriteAllTextAsync("Hello world");
+
+            DisplayAlert("file path", file.Path,  "ok");
+        }
+
+        private void downloadBtn_Clicked(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri("http://www.carbon14.pl/~andrzej/Pomiary/Regresja.xls"));
+        
+
+            //string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //string filename = Path.Combine(path, "myfile.txt");
+
+            //File.WriteAllText(filename, "hello");
+
+            //string message = File.ReadAllText(filename);
+            //DisplayAlert("File", message, "OK");
+
+
+            //using (var streamWriter = new StreamWriter(filename, true))
+            //{
+            //    streamWriter.WriteLine(DateTime.UtcNow);
+
+            //}
+
+            //using (var streamReader = new StreamReader(filename))
+            //{
+            //    string content = streamReader.ReadToEnd();
+            //    DisplayAlert("File", content, "OK");
+            //}
+        }
+
+        private async Task downloadBtn_Clicked2Async(object sender, EventArgs e)
+        {
+            await CreateRealFileAsync();
         }
     }
 

@@ -18,6 +18,8 @@
 
         <microcharts:ChartView x:Name="chartView" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" />
 
+        <Button x:Name="downloadBtn" Text="Download" HorizontalOptions="Center"  VerticalOptions="End"  Clicked="downloadBtn_Clicked"/>
+
         <Label Text="{Binding UserName}" HorizontalOptions="CenterAndExpand" VerticalOptions="End" />
     </StackLayout>
 </ContentPage>
