@@ -9,6 +9,7 @@ using System.Globalization;
 using AghWeatherApp.ViewModels;
 using System.IO;
 using PCLStorage;
+using AghWeatherApp.Models;
 
 namespace AghWeatherApp.Views
 {
@@ -19,6 +20,7 @@ namespace AghWeatherApp.Views
         private String urlProd = "http://192.168.43.195:60869";
 
         private List<TemperatureDevice> devices;
+        private int selectedIndex = 0;
 
         public AboutPage()
         {
@@ -125,7 +127,7 @@ namespace AghWeatherApp.Views
         private async Task OnPickerSelectedIndexChangedAsync(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
-            int selectedIndex = picker.SelectedIndex;
+            selectedIndex = picker.SelectedIndex;
 
             if (selectedIndex != -1)
             {
@@ -155,29 +157,7 @@ namespace AghWeatherApp.Views
 
         private void downloadBtn_Clicked(object sender, EventArgs e)
         {
-            Device.OpenUri(new Uri("http://www.carbon14.pl/~andrzej/Pomiary/Regresja.xls"));
-        
-
-            //string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            //string filename = Path.Combine(path, "myfile.txt");
-
-            //File.WriteAllText(filename, "hello");
-
-            //string message = File.ReadAllText(filename);
-            //DisplayAlert("File", message, "OK");
-
-
-            //using (var streamWriter = new StreamWriter(filename, true))
-            //{
-            //    streamWriter.WriteLine(DateTime.UtcNow);
-
-            //}
-
-            //using (var streamReader = new StreamReader(filename))
-            //{
-            //    string content = streamReader.ReadToEnd();
-            //    DisplayAlert("File", content, "OK");
-            //}
+            Device.OpenUri(new Uri(ProgramState.apiUrl + "/api/excel/exportdevavg/" + selectedIndex.ToString()));       
         }
 
         private async Task downloadBtn_Clicked2Async(object sender, EventArgs e)

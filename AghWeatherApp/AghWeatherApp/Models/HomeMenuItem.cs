@@ -10,6 +10,7 @@ namespace AghWeatherApp.Models
         Main,
         Login,
         UserDetails,
+        Chat,
     }
     public class HomeMenuItem
     {

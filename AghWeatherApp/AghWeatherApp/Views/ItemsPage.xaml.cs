@@ -105,5 +105,10 @@ namespace AghWeatherApp.Views
 
             this.chartDevicesAvr.Chart = mockChart;
         }
+
+        private void downloadBtn_Clicked(object sender, EventArgs e)
+        {
+            Device.OpenUri(new Uri(ProgramState.apiUrl + "/api/excel/exportdevavg"));
+        }
     }
 }

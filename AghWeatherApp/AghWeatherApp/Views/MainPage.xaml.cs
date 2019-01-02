@@ -38,6 +38,9 @@ namespace AghWeatherApp.Views
                     case (int)MenuItemType.UserDetails:
                         MenuPages.Add(id, new NavigationPage(new UserDetails()));
                         break;
+                    case (int)MenuItemType.Chat:
+                        MenuPages.Add(id, new NavigationPage(new ChatPage()));
+                        break;
                 }
             }
 

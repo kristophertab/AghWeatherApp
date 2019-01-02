@@ -28,13 +28,15 @@ namespace AghWeatherApp.Views
             {
                 new HomeMenuItem {Id = MenuItemType.Main, Title="Main" },
                 new HomeMenuItem {Id = MenuItemType.Details, Title="Details" },
-                new HomeMenuItem {Id = MenuItemType.UserDetails, Title = "Manage Users"}
+                new HomeMenuItem {Id = MenuItemType.UserDetails, Title = "Manage Users"},
+                new HomeMenuItem {Id = MenuItemType.Chat, Title = "Chat"}
             };
 
             menuItemsUser = new List<HomeMenuItem>
             {
                 new HomeMenuItem {Id = MenuItemType.Main, Title="Main" },
                 new HomeMenuItem {Id = MenuItemType.Details, Title="Details" },
+                new HomeMenuItem {Id = MenuItemType.Chat, Title = "Chat"}
             };
 
             UpdateMenuItems();

@@ -9,6 +9,7 @@
         <Entry x:Name="pathEntry" Text = "http://www.example.com:8080" HorizontalOptions="Center"  VerticalOptions="Start" />
         <Button x:Name="getDevicesButton" Text="Get Devices" HorizontalOptions="Center" VerticalOptions="Start" Clicked="Button_ClickedAsync"/>
         <microcharts:ChartView x:Name="chartDevicesAvr" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" />
+        <Button x:Name="downloadBtn" Text="Download" HorizontalOptions="Center"  VerticalOptions="End"  Clicked="downloadBtn_Clicked"/>
         <Label x:Name="userData" Text="{Binding UserName}" HorizontalOptions="CenterAndExpand" VerticalOptions="End" />
     </StackLayout>
 </ContentPage>

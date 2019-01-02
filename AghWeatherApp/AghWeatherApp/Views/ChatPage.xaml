@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AghWeatherApp.Views.ChatPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="chatText" Text="This is Xamrin Chat!"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="FillAndExpand" />
+            <Button Text="Send" VerticalOptions="End" HorizontalOptions="FillAndExpand" Clicked="ChatService_SendMessageCommand"/>
+            <Entry x:Name="messageText" VerticalOptions="End" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
